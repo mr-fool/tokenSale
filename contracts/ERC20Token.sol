@@ -6,8 +6,18 @@ contract ERC20Token {
     Set the total number of tokens
     Read the total number of tokens
      */
+    
+     /*
+    Testing 
+    truffle console
+    truffle(development)> ERC20Token.deployed().then(function(i) {token=i;})
+    token.address
+    token.totalSupply().then(function(s) {totalSupply =s;})
+    totalSupply.toNumber()
+      */
     uint256 public totalSupply;
     uint256 public balance;
+    
     constructor() public {
         totalSupply = 1000000;
 
