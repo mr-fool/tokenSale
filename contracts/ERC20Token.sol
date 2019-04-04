@@ -7,7 +7,7 @@ contract ERC20Token {
     Read the total number of tokens
      */
     uint256 public totalSupply;
-    
+    uint256 public balance;
     constructor() public {
         totalSupply = 1000000;
 
