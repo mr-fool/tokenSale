@@ -17,9 +17,9 @@ contract ERC20Token {
       */
     uint256 public totalSupply;
     uint256 public balance;
-    
-    constructor() public {
-        totalSupply = 1000000;
+
+    constructor(uint256 _initialSupply) public {
+        totalSupply = _initialSupply;
 
     }
 }
