@@ -16,10 +16,12 @@ contract ERC20Token {
     totalSupply.toNumber()
       */
     uint256 public totalSupply;
-    uint256 public balance;
+    mapping(address => uint256) public balanceOf;
 
     constructor(uint256 _initialSupply) public {
+        balanceOf[msg.sender] = _initialSupply;
         totalSupply = _initialSupply;
+        //allocate the initial supply
 
     }
 }
