@@ -7,6 +7,6 @@ contract("sets the total supply upon deployment", async accounts => {
       let balance = await instance.totalSupply.call();
       assert.equal(balance.toNumber(), 1000000,'sets the total supply to 1,000,000')
       let adminBalance = await instance.balanceOf.call(accounts[0]);
-      console.log(adminBalance.toNumber());
+      assert.equal(adminBalance.toNumber(),1000000,'testing msg.sender balance');
     });
 });
