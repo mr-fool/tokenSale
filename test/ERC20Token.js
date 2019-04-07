@@ -1,7 +1,9 @@
 var ERC20Token = artifacts.require("ERC20Token");
 
+
+let instance; 
 beforeEach( async () => {
-  let instance = await ERC20Token.deployed();
+  instance = await ERC20Token.deployed();
 
 });
 describe("sets the total supply upon deployment", async accounts => {
