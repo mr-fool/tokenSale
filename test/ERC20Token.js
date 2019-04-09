@@ -18,5 +18,9 @@ contract("ERC20", async accounts => {
         let adminBalance = await instance.balanceOf.call(accounts[0]);
         assert.equal(adminBalance.toNumber(),1000000,'testing msg.sender balance');
       });
+      it("testing symbol and name", async() => {
+        let name = await instance.name;
+        assert.equal(name, 'soycoin', 'has the correct name');
+      });
   });
 });

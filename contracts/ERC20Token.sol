@@ -18,6 +18,11 @@ contract ERC20Token {
     uint256 public totalSupply;
     mapping(address => uint256) public balanceOf;
 
+    //Name
+    string public name = 'soycoin';
+    //Symbol
+
+
     constructor(uint256 _initialSupply) public {
         balanceOf[msg.sender] = _initialSupply;
         totalSupply = _initialSupply;
