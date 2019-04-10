@@ -31,9 +31,11 @@ contract("ERC20", async accounts => {
     it('transfers token ownership', async() => {
       try{
         let transfer = await instance.transfer.call(accounts[1],999999);
+        let transferTest = instance.transfer.call(accounts[1], 250000, { from: accounts[0] });
       }
       catch (error) {
         assert.fail(transfer.error.messageindexOf('revert') >=0, 'error message must contain revert');
+        assert.equal(transferTest, true, 'it returns true');
       }
     });
   });
