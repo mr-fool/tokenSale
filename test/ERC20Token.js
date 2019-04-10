@@ -20,7 +20,17 @@ contract("ERC20", async accounts => {
       });
       it("has the proper token name", async() => {
         let name = await instance.name();
-        assert.deepEqual(name, 'soycoin', 'has the correct name');
+        assert.equal(name, 'soycoin', 'has the correct name');
       });
+      it("has the proper symbol", async() => {
+        let symbol = await instance.symbol();
+        assert.equal(symbol, 'syn', 'has the correct symbol');
+      });
+  });
+  describe('transfer', () => {
+    it('transfers token ownership', async() => {
+      let transfer = await instance.transfer.call(accounts[1],999999);
+      assert.fail(transfer.error.messageindexOf('revert') >=0, 'error message must contain revert');
+    });
   });
 });

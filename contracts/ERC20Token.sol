@@ -18,15 +18,19 @@ contract ERC20Token {
     uint256 public totalSupply;
     mapping(address => uint256) public balanceOf;
 
-    //Name
     string public name = 'soycoin';
-    //Symbol
-
+    string public symbol = 'syn';
 
     constructor(uint256 _initialSupply) public {
         balanceOf[msg.sender] = _initialSupply;
         totalSupply = _initialSupply;
-        //allocate the initial supply
+    }
+    //Transfer
+    function transfer(address _to, uint256 _value) public returns (bool success) {
+      //Exception if account does't have enough
+      require(balanceOf[msg.sender] >= _value);
+      //Return a boolean
+      //transfer Event
 
     }
 }
