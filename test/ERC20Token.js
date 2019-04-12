@@ -36,6 +36,7 @@ contract("ERC20", async accounts => {
       catch (error) {
         assert.fail(transfer.error.messageindexOf('revert') >=0, 'error message must contain revert');
         assert.equal(transferTest, true, 'it returns true');
+        assert.equal(accounts[1] >= 240000 ); //gas lost
       }
     });
   });
