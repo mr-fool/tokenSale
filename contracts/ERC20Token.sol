@@ -15,6 +15,7 @@ contract ERC20Token {
     token.totalSupply().then(function(s) {totalSupply =s;})
     totalSupply.toNumber()
       */
+    using SafeMath for uint256;
     uint256 public totalSupply;
     mapping(address => uint256) public balanceOf;
 
