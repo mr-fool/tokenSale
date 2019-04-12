@@ -41,4 +41,7 @@ contract ERC20Token {
       emit Transfer(msg.sender, _to, _value);
       return true;
     }
+    function approve(address _spender, uint256 _value) public returns (bool success) {
+      return true;
+    }    
 }
