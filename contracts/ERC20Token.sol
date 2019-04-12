@@ -21,7 +21,7 @@ contract ERC20Token {
     mapping(address => uint256) public balanceOf;
 
     string public name = 'soycoin';
-    string public symbol = 'syn';
+    string public symbol = 'soy';
 
     event Transfer(
       address indexed _from,
