@@ -1,4 +1,5 @@
 pragma solidity ^0.5.0;
+import "./SafeMath.sol";
 
 contract ERC20Token {
     /*What is needed
@@ -35,8 +36,8 @@ contract ERC20Token {
     function transfer(address _to, uint256 _value) public returns (bool success) {
       //Exception if account does't have enough
       require(balanceOf[msg.sender] >= _value);
-      balanceOf[msg.sender] -=_value;
-      balanceOf[_to] += _value;
+      balanceOf[msg.sender] = balanceOf[msg.sender].sub(_value);
+      balanceOf[_to] = balanceOf[msg.sender].add(_value);
 
 
     }
