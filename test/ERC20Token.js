@@ -24,7 +24,7 @@ contract("ERC20", async accounts => {
       });
       it("has the proper symbol", async() => {
         let symbol = await instance.symbol();
-        assert.equal(symbol, 'syn', 'has the correct symbol');
+        assert.equal(symbol, 'soy', 'has the correct symbol');
       });
   });
   describe('transfer', () => {
