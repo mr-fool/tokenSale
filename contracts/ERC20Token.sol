@@ -19,7 +19,9 @@ contract ERC20Token {
     using SafeMath for uint256;
     uint256 public totalSupply;
     mapping(address => uint256) public balanceOf;
-    mapping (address => mapping (address => uint256)) private _allowed;
+    mapping(address => mapping(address => uint256)) public allowance;
+
+    //mapping (address => mapping (address => uint256)) private _allowed;
     
     string public name = 'soycoin';
     string public symbol = 'soy';
@@ -50,10 +52,11 @@ contract ERC20Token {
       return true;
     }
     function approve(address _spender, uint256 _value) public returns (bool success) {
+      allowance[msg.sender][_spender] = _value;
       emit Approval(msg.sender, _spender, _value);
       return true;
     }  
-    function allowance(address owner, address spender) public view returns (uint256) {
+    /*function allowance(address owner, address spender) public view returns (uint256) {
       return _allowed[owner][spender];
-    }  
+    }  */
 }
