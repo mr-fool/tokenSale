@@ -19,7 +19,8 @@ contract ERC20Token {
     using SafeMath for uint256;
     uint256 public totalSupply;
     mapping(address => uint256) public balanceOf;
-
+    mapping(address => mapping(address => uint256)) public allowance;
+    
     string public name = 'soycoin';
     string public symbol = 'soy';
 
