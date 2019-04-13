@@ -68,7 +68,7 @@ contract("ERC20", async accounts => {
       }
       catch (error) {
         assert.fail(error.message.indexOf('revert') >= 0, 'cannot transfer values larger than balance');
-        
+        assert.fail(error.message.indexOf('revert') >= 0, 'cannot transfer values larger than approved amount');
       }
     });
 
