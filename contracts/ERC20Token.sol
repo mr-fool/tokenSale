@@ -26,7 +26,7 @@ contract ERC20Token {
     string public name = 'soycoin';
     string public symbol = 'soy';
 
-    event Transfer(
+    struct Transfer(
       address indexed _from,
       address indexed _to,
       uint256 _value
@@ -56,7 +56,7 @@ contract ERC20Token {
       emit Approval(msg.sender, _spender, _value);
       return true;
     }  
-    /*function allowance(address owner, address spender) public view returns (uint256) {
-      return _allowed[owner][spender];
-    }  */
+  function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
+
+  }
 }
