@@ -57,7 +57,11 @@ contract("ERC20", async accounts => {
       toAccount = accounts[3];
       spendingAccount = accounts[4];
       //Transfer some tokens to fromAccount
-      
+      instance.transfer(fromAccount, 100, {from: accounts[0]});
+      //Approve spendingAccount to spend 10 tokens from fromAccount
+      instance.approve(spendingAccount, 10, {from: fromAccount});
+      //Try transferring something large than the sender's balance
+      instance.transferFrom(fromAccount, toAccount,);
     });
 
   });
