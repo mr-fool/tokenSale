@@ -44,6 +44,7 @@ contract("ERC20", async accounts => {
     it('approves tokens for delegated transfer', async() => {
       let approval =  await instance.approve.call(accounts[1], 100);
       assert.equal(approval, true, 'it returns true');
+
     });
   });
 });
