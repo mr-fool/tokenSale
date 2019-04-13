@@ -40,6 +40,7 @@ contract("ERC20", async accounts => {
       }
     });
   });
+  
   describe('approve', () => {
     it('approves tokens for delegated transfer', async() => {
       let approval =  await instance.approve.call(accounts[1], 100);
@@ -49,4 +50,16 @@ contract("ERC20", async accounts => {
       assert.equal(allowanceTest.toNumber(), 100, 'stores the allowance for delegated transfer');
     });
   });
+
+  describe('transfer from', () => {
+    it("handles delegated token transfer", async() => {
+      fromAccount = accounts[2];
+      toAccount = accounts[3];
+      spendingAccount = accounts[4];
+      //Transfer some tokens to fromAccount
+      
+    });
+
+  });
+
 });

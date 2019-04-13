@@ -57,6 +57,6 @@ contract ERC20Token {
       return true;
     }  
   function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
-
+    return true;
   }
 }
