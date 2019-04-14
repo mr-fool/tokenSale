@@ -61,15 +61,15 @@ contract("ERC20", async accounts => {
       //Approve spendingAccount to spend 10 tokens from fromAccount
       await instance.approve(spendingAccount, 10, {from: fromAccount});
       //Try transferring something large than the sender's balance
-      try{
+      /*try{
         await instance.transferFrom(fromAccount, toAccount,9999, {from: spendingAccount});
         //Try transferring something larger than the approved amount
         await instance.transferFrom(fromAccount, toAccount, 20, { from: spendingAccount});
       }
       catch (error) {
-        assert.ok(error.message.indexOf('revert') >= 0, 'cannot transfer values larger than balance');
-        assert.ok(error.message.indexOf('revert') >= 0, 'cannot transfer values larger than approved amount');
-      }
+        assert.fail(error.message.indexOf('revert') >= 0, 'cannot transfer values larger than balance');
+        assert.fail(error.message.indexOf('revert') >= 0, 'cannot transfer values larger than approved amount');
+      }*/
     });
 
   });
