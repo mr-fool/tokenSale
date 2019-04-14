@@ -1,6 +1,11 @@
 var ERC20Token = artifacts.require("ERC20Token");
 
-
+/*
+its not needed
+just run it and make some sort of assert
+like make sure the balance of the owner is reduced afteer a transfer
+with balanceOf and assert.equal
+*/
 let instance;
 
 beforeEach( async () => {
