@@ -64,6 +64,7 @@ contract ERC20Token {
     balanceOf[_to] = balanceOf[_to].add(_value);
 
     emit Transfer(_from,_to, _value);
+    emit Approval(_from, msg.sender, allowance[_from][msg.sender].sub(_value));
     return true;
   }
 }
