@@ -19,9 +19,9 @@ contract ERC20Token {
     using SafeMath for uint256;
     uint256 public totalSupply;
     mapping(address => uint256) public balanceOf;
-    mapping(address => mapping(address => uint256)) public allowance;
+    //mapping(address => mapping(address => uint256)) public allowance;
 
-    //mapping (address => mapping (address => uint256)) private _allowed;
+    mapping (address => mapping (address => uint256)) private allowed;
     
     string public name = 'soycoin';
     string public symbol = 'soy';
@@ -52,18 +52,21 @@ contract ERC20Token {
       return true;
     }
     function approve(address _spender, uint256 _value) public returns (bool success) {
-      allowance[msg.sender][_spender] = _value;
+      allowed[msg.sender][_spender] = _value;
       emit Approval(msg.sender, _spender, _value);
       return true;
     }  
-  function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
-    require(_value <= balanceOf[_from]);
-    require(_value <= allowance[_from][msg.sender]);
+    function allowance(address owner, address spender) public view returns (uint256) {
+       return allowed[owner][spender];
+    }
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
+      require(_value <= balanceOf[_from]);
+      require(_value <= allowed[_from][msg.sender]);
 
-    balanceOf[_from] = balanceOf[_from].sub(_value);
-    balanceOf[_to] = balanceOf[_to].add(_value);
-    allowance[_from][msg.sender] =  allowance[_from][msg.sender].sub(_value);
-    emit Transfer(_from,_to, _value);
-    return true;
-  }
+      balanceOf[_from] = balanceOf[_from].sub(_value);
+      balanceOf[_to] = balanceOf[_to].add(_value);
+      allowed[_from][msg.sender] =  allowed[_from][msg.sender].sub(_value);
+      emit Transfer(_from,_to, _value);
+      return true;
+    }
 }
