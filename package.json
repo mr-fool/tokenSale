@@ -1,0 +1,25 @@
+{
+  "name": "tokensale",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mr-fool/tokenSale.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mr-fool/tokenSale/issues"
+  },
+  "homepage": "https://github.com/mr-fool/tokenSale#readme",
+  "dependencies": {
+    "token-test-suite": "^0.1.1"
+  }
+}
