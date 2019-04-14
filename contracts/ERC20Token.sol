@@ -2,24 +2,10 @@ pragma solidity ^0.5.0;
 import "./SafeMath.sol";
 
 contract ERC20Token {
-    /*What is needed
-    Constructor
-    Set the total number of tokens
-    Read the total number of tokens
-     */
-    
-     /*
-    Testing 
-    truffle console
-    truffle(development)> ERC20Token.deployed().then(function(i) {token=i;})
-    token.address
-    token.totalSupply().then(function(s) {totalSupply =s;})
-    totalSupply.toNumber()
-      */
+
     using SafeMath for uint256;
     uint256 public totalSupply;
     mapping(address => uint256) public balanceOf;
-    //mapping(address => mapping(address => uint256)) public allowance;
 
     mapping (address => mapping (address => uint256)) private allowed;
     
