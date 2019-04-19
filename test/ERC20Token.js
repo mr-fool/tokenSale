@@ -44,7 +44,7 @@ contract("ERC20", async accounts => {
         transfer = await instance.transfer(accounts[1],999999);
       }
       catch (error) {
-        assert.fail(transfer.error.messageindexOf('revert') >=0, 'error message must contain revert');
+        assert.fail(error.messageindexOf('revert') >=0, 'error message must contain revert');
       }
     });
   });
