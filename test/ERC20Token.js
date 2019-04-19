@@ -59,8 +59,8 @@ contract("ERC20", async accounts => {
 
   describe('transfer from', () => {
     it("test allotted balance", async() => {
-      await instance.transferFrom(accounts[0],accounts[1],100);
-      assert.equal(accounts[0], 100, "right amount");
+      await instance.transferFrom(accounts[0],accounts[1],100, {from : accounts[1]});
+      assert.equal(balanceOf(accounts[0]), 100, "right amount");
     });
 
   });
