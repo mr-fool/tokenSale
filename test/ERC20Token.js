@@ -61,7 +61,7 @@ contract("ERC20", async accounts => {
   describe('transfer from', () => {
     it("properly rejects invalid balance", async() => {
       let accountOneBalance = await instance.balanceOf(accounts[1]);
-      assert.equal(accountOneBalance <= 100, "right account");
+      assert.equal(accountOneBalance.toNumber() <= 100, "right account");
       
     });
 
