@@ -59,7 +59,7 @@ contract("ERC20", async accounts => {
 
   describe('transfer from', () => {
     it("properly rejects invalid balance", async() => {
-      let transferFrom = await instance.transferFrom(accounts[0],accounts[1],100);
+      await instance.transferFrom(accounts[0],accounts[1],100);
       assert.equal(accounts[0] >= 98, "right amount");
     });
 
