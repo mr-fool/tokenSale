@@ -15,7 +15,7 @@ beforeEach( async () => {
 contract("ERC20", async accounts => {
     describe('constructor', () => {
       it("sets the total supply upon deployment", async () => {
-        let balance = await instance.totalSupply;
+        let balance = await instance.totalSupply();
         assert.equal(balance.toNumber(), 1000000,'sets the total supply to 1,000,000')
         
       });
