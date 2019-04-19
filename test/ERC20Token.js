@@ -51,6 +51,7 @@ contract("ERC20", async accounts => {
       let approval =  await instance.approve.call(accounts[1], 100);
       assert.equal(approval, true, 'it returns true');
     });
+    
     it("testing allowance", async() => {
       let allowanceTest = await instance.allowance(accounts[0], accounts[1]);
       assert.equal(allowanceTest.toNumber(), 100, 'stores the allowance for delegated transfer');
