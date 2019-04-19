@@ -15,12 +15,12 @@ beforeEach( async () => {
 contract("ERC20", async accounts => {
     describe('constructor', () => {
       it("sets the total supply upon deployment", async () => {
-        let balance = await instance.totalSupply.call();
+        let balance = await instance.totalSupply;
         assert.equal(balance.toNumber(), 1000000,'sets the total supply to 1,000,000')
         
       });
       it("gives initial supply to msg.sender", async() =>{
-        let adminBalance = await instance.balanceOf.call(accounts[0]);
+        let adminBalance = await instance.balanceOf(accounts[0]);
         assert.equal(adminBalance.toNumber(),1000000,'testing msg.sender balance');
       });
       it("has the proper token name", async() => {
@@ -35,8 +35,8 @@ contract("ERC20", async accounts => {
   describe('transfer', () => {
     it('transfers token ownership', async() => {
       try{
-        let transfer = await instance.transfer.call(accounts[1],50);
-        let transferTest = await instance.transfer.call(accounts[1], 999999, { from: accounts[0] });
+        let transfer = await instance.transfer(accounts[1],50);
+        let transferTest = await instance.transfer(accounts[1], 999999, { from: accounts[0] });
       }
       catch (error) {
         assert.fail(transfer.error.messageindexOf('revert') >=0, 'error message must contain revert');
