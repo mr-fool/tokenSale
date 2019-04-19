@@ -7,8 +7,6 @@ like make sure the balance of the owner is reduced afteer a transfer
 with balanceOf and assert.equal
 */
 let instance;
-let transfer;
-let transferTest;
 
 beforeEach( async () => {
   instance = await ERC20Token.deployed();
@@ -36,6 +34,8 @@ contract("ERC20", async accounts => {
   });
   describe('transfer', () => {
     it('transfers token ownership', async() => {
+      let transfer;
+      let transferTest;
       try{
         transfer = await instance.transfer(accounts[1],50);
         transferTest = await instance.transfer(accounts[1], 999999, { from: accounts[0] });
