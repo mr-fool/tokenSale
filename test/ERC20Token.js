@@ -52,12 +52,8 @@ contract("ERC20", async accounts => {
   describe('approve', () => {
     it('approves tokens for delegated transfer', async() => {
       let approval =  await instance.approve(accounts[1], 100);
-      assert.equal(approval, true, 'it returns true');
-    });
-
-    it("testing allowance", async() => {
-      let allowanceTest = await instance.allowance(accounts[0],  accounts[1]);
-      assert.equal(allowanceTest.toNumber(), 100, 'stores the allowance for delegated transfer');
+      let allowedAmount = await instance.allowance(accounts[0],  accounts[1]);
+      assert.equal(allowedAmount.toNumber(), 100, 'stores the allowance for delegated transfer');
     });
   });
 
