@@ -57,25 +57,12 @@ contract("ERC20", async accounts => {
   });
 
   describe('transfer from', () => {
-    it("handles delegated token transfer", async() => {
+    it("require(_value <= balanceOf[_from]);", async() => {
       fromAccount = accounts[2];
       toAccount = accounts[3];
       spendingAccount = accounts[4];
-      //Transfer some tokens to fromAccount
-      await instance.transfer(fromAccount, 100, {from: accounts[0]});
-      //Approve spendingAccount to spend 10 tokens from fromAccount
-      await instance.approve(spendingAccount, 10, {from: fromAccount});
-      //Try transferring something large than the sender's balance
-      try{
-        await instance.transferFrom(fromAccount, toAccount,9999, {from: spendingAccount});
-        //Try transferring something larger than the approved amount
-        await instance.transferFrom(fromAccount, toAccount, 20, { from: spendingAccount});
-      }
-      catch (error) {
-        console.log(error);
-        assert.ok(error.message.indexOf('revert') >= 0, 'cannot transfer values larger than balance');
-       //assert.fail(error.message.indexOf('revert') >= 0, 'cannot transfer values larger than approved amount');
-      }
+      assert.equal( something <= fromAccount);
+      
     });
 
   });
