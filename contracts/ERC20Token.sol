@@ -11,6 +11,7 @@ contract ERC20Token {
     
     string public name = 'soycoin';
     string public symbol = 'soy';
+    uint8 public _decimals = 2;
 
     event Transfer(
       address indexed _from,
@@ -27,6 +28,10 @@ contract ERC20Token {
     constructor(uint256 _initialSupply) public {
         balanceOf[msg.sender] = _initialSupply;
         totalSupply = _initialSupply;
+    }
+
+    function decimals() public view returns (uint8) {
+        return _decimals;
     }
     //Transfer
     function transfer(address _to, uint256 _value) public returns (bool success) {

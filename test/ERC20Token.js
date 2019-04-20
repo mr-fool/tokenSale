@@ -32,38 +32,47 @@ contract("ERC20", async accounts => {
         assert.equal(symbol, 'soy', 'has the correct symbol');
       });
   });
-  describe('transfer', () => {
-    it('successfully transfers', async() => {
-      await instance.transfer(accounts[1], 50, { from: accounts[0] });
+    
+    describe('decimals', () => {
+      it("test the decimals", async () => {
+        let decimals = await instance.decimals();
+        assert.equal(decimals, 2, "has the correct decimals");
 
+      });
     });
 
-    it('rejects above actual balance transfers', async() => {
-      let transfer;
-      try{
-        transfer = await instance.transfer(accounts[1],999999);
-      }
-      catch (error) {
-        assert.ok(error.message.indexOf('revert')>=0, 'error message must contain revert');
-      }
-    });
-  });
-  
-  describe('approve', () => {
-    it('approves tokens for delegated transfer', async() => {
-      await instance.approve(accounts[1], 100);
-      let allowedAmount = await instance.allowance(accounts[0],  accounts[1]);
-      assert.equal(allowedAmount.toNumber(), 100, 'stores the allowance for delegated transfer');
-    });
-  });
+    describe('transfer', () => {
+      it('successfully transfers', async() => {
+        await instance.transfer(accounts[1], 50, { from: accounts[0] });
 
-  describe('transfer from', () => {
-    it("test allotted balance", async() => {
-      await instance.transferFrom(accounts[0],accounts[1],100, {from : accounts[1]});
-      let accountOneBalance = await instance.balanceOf(accounts[1]);
-      assert.equal(accountOneBalance.toNumber(), 150, "right amount");
+      });
+
+      it('rejects above actual balance transfers', async() => {
+        let transfer;
+        try{
+          transfer = await instance.transfer(accounts[1],999999);
+        }
+        catch (error) {
+          assert.ok(error.message.indexOf('revert')>=0, 'error message must contain revert');
+        }
+      });
+    });
+    
+    describe('approve', () => {
+      it('approves tokens for delegated transfer', async() => {
+        await instance.approve(accounts[1], 100);
+        let allowedAmount = await instance.allowance(accounts[0],  accounts[1]);
+        assert.equal(allowedAmount.toNumber(), 100, 'stores the allowance for delegated transfer');
+      });
     });
 
-  });
+    describe('transfer from', () => {
+      it("test allotted balance", async() => {
+        await instance.transferFrom(accounts[0],accounts[1],100, {from : accounts[1]});
+        let accountOneBalance = await instance.balanceOf(accounts[1]);
+        assert.equal(accountOneBalance.toNumber(), 150, "right amount");
+      });
+
+    });
 
 });
