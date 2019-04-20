@@ -64,11 +64,6 @@ contract("ERC20", async accounts => {
       assert.equal(accountOneBalance.toNumber(), 150, "right amount");
     });
 
-    it('value <= allowed[_from][msg.sender]', async() => {
-      let allowedAmount = await instance.allowance(accounts[0],  accounts[1]);
-      assert.equal(allowedAmount.toNumber(), 100, 'stores the allowance for delegated transfer');
-    });
-
   });
 
 });
