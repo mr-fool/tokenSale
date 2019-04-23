@@ -1,7 +1,8 @@
-const ERC20Token = artifacts.require("ERC20TokenSale");
+const ERC20Token = artifacts.require("ERC20Token");
+const ERC20TokenSale = artifacts.require("ERC20TokenSale");
 
 beforeEach( async () => {
-    instance = await ERC20Token.deployed();
+    instance = await ERC20TokenSale.deployed();
   
   });
 contract('ERC20TokenSale', function(accounts){
