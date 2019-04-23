@@ -34,7 +34,7 @@ contract('ERC20TokenSale', function(accounts){
             let numberOfTokens = 10;
             let value = numberOfTokens * tokenPrice;
             await instance.buyTokens(numberOfTokens, {from: buyer, value: value});
-            let amount = await instance.tokenSold();
+            let amount = await instance.tokensSold();
             assert.equal(amount.toNumber(), numberOfTokens, "increments the number of tokens sold");
         });
     });
