@@ -7,6 +7,7 @@ const ERC20TokenSale = artifacts.require("ERC20TokenSale");
 };*/
 module.exports = function(deployer) {
   deployer.deploy(ERC20Token, 1000000).then(function() {
-    return deployer.deploy(ERC20TokenSale, ERC20Token.address);
+    let tokenPrice = 1000000000000000; // in wei 0.001 ether
+    return deployer.deploy(ERC20TokenSale, ERC20Token.address,tokenPrice);
   });
 };
