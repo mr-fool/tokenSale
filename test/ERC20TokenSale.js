@@ -30,7 +30,7 @@ contract('ERC20TokenSale', function(accounts){
     });
 
     describe("buyTokens", () => {
-        it('facilitates token buying', async () => {
+        it('increments the number of tokens sold', async () => {
             let numberOfTokens = 10;
             let value = numberOfTokens * tokenPrice;
             await instance.buyTokens(numberOfTokens, {from: buyer, value: value});
