@@ -15,4 +15,13 @@ contract ERC20TokenSale {
         //Token Price
         tokenPrice = _tokenPrice;
     }
+
+    function buyTokens(uint256 _numberOfTokens) public payable {
+        //Require that value is equal to tokens
+        //Require that the contract has enough tokens
+        //Require that a transfer is successful
+        
+        //Keep track of tokens sold
+        //Trigger Sell event
+    }
 }
