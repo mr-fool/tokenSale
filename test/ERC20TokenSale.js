@@ -40,7 +40,8 @@ contract('ERC20TokenSale', function(accounts){
         });
 
         it('receipt', async (resp) => {
-            var receipt = web3.eth.getTransactionReceipt(buyTokens.tx);
+            var receipt = await web3.eth.getTransactionReceipt(buyTokens.tx);
+            console.log(receipt.logs);
             assert.equal(receipt.logs.length, 1, 'triggers one event');
             assert.equal(receipt.logs[0].event, 'Sell', 'should be the "Sell" event');
             assert.equal(receipt.logs[0].args._buyer, buyer, 'logs the account that purchased the tokens');
