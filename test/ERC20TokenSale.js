@@ -4,6 +4,7 @@ const ERC20TokenSale = artifacts.require("ERC20TokenSale");
 let instance;
 let tokenPrice;
 let buyer;
+let buyTokens;
 
 beforeEach( async () => {
     instance = await ERC20TokenSale.deployed();
@@ -33,12 +34,13 @@ contract('ERC20TokenSale', function(accounts){
         it('increments the number of tokens sold', async () => {
             let numberOfTokens = 10;
             let value = numberOfTokens * tokenPrice;
-            await instance.buyTokens(numberOfTokens, {from: buyer, value: value});
+            buyTokens = await instance.buyTokens(numberOfTokens, {from: buyer, value: value});
             let amount = await instance.tokensSold();
             assert.equal(amount.toNumber(), numberOfTokens, "increments the number of tokens sold");
         });
 
-        it('receipt', async (receipt) => {
+        it('receipt', async (resp) => {
+            var receipt = web3.eth.getTransactionReceipt(buyTokens.tx);
             assert.equal(receipt.logs.length, 1, 'triggers one event');
             assert.equal(receipt.logs[0].event, 'Sell', 'should be the "Sell" event');
             assert.equal(receipt.logs[0].args._buyer, buyer, 'logs the account that purchased the tokens');
