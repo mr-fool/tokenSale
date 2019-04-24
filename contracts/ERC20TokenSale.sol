@@ -9,6 +9,7 @@ contract ERC20TokenSale {
     ERC20Token public tokenContract;
     uint256 public tokenPrice;
     uint256 public tokensSold;
+    event Sell(address _buyer, uint256 _amount);
 
     constructor(ERC20Token _tokenContract, uint256 _tokenPrice) public{
         //Assign an admin
@@ -27,5 +28,6 @@ contract ERC20TokenSale {
         //Keep track of tokens sold
         tokensSold = tokensSold.add(_numberOfTokens);
         //Trigger Sell event
+        emit Sell(msg.sender, _numberOfTokens);
     }
 }
