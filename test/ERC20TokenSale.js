@@ -5,6 +5,7 @@ let instance;
 let tokenPrice;
 let buyer;
 let buyTokens;
+let numberOfTokens;
 
 beforeEach( async () => {
     instance = await ERC20TokenSale.deployed();
@@ -32,17 +33,16 @@ contract('ERC20TokenSale', function(accounts){
 
     describe("buyTokens", () => {
         it('increments the number of tokens sold', async () => {
-            let numberOfTokens = 10;
+            numberOfTokens = 10;
             let value = numberOfTokens * tokenPrice;
             buyTokens = await instance.buyTokens(numberOfTokens, {from: buyer, value: value});
             let amount = await instance.tokensSold();
             assert.equal(amount.toNumber(), numberOfTokens, "increments the number of tokens sold");
         });
 
-        it('receipt', async (resp) => {
-            console.log("resp "+ resp);
+        it('receipt', async () => {
             console.log(buyTokens.tx);
-            let receipt = await web3.eth.getTransactionReceipt(buyTokens.tx);
+            let receipt = await buyTokens;
             //console.log(receipt.logs[0].event);
             assert.equal(receipt.logs.length, 1, 'triggers one event');
             assert.equal(receipt.logs[0].event, "Sell", 'should be the "Sell" event');
