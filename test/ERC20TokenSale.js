@@ -47,5 +47,15 @@ contract('ERC20TokenSale', function(accounts){
             assert.equal(receipt.logs[0].args._buyer, buyer, 'logs the account that purchased the tokens');
             assert.equal(receipt.logs[0].args._amount, numberOfTokens, 'logs the number of tokens purchased');
         });
+
+        it ("msg.value must equal number of tokens in wei", async () => {
+            try{
+                await buyTokens(numberOfTokens, { from: buyer, value: 1 });
+            }
+            catch(error) {
+                assert(error.message.indexOf('revert') >= 0, 'msg.value must equal number of tokens in wei');
+            }
+            
+        });
     });
 });
