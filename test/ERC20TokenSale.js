@@ -40,6 +40,7 @@ contract('ERC20TokenSale', function(accounts){
         });
 
         it('receipt', async (resp) => {
+            console.log("resp "+ resp);
             console.log(buyTokens.tx);
             let receipt = await web3.eth.getTransactionReceipt(buyTokens.tx);
             //console.log(receipt.logs[0].event);
