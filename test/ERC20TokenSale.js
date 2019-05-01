@@ -7,10 +7,13 @@ let buyer;
 let buyTokens;
 let numberOfTokens;
 let admin;
+let tokensAvailable;
+
 beforeEach( async () => {
     instance = await ERC20TokenSale.deployed();
     tokenInstance = await ERC20Token.deployed();
     tokenPrice = 1000000000000000; // in wei 0.001 ether
+    tokensAvailable = 750000;
   });
 contract('ERC20TokenSale', function(accounts){
     buyer = accounts[1];
