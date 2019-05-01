@@ -12,16 +12,19 @@ let tokenInstance;
 
 beforeEach( async () => {
     instance = await ERC20TokenSale.deployed();
-    tokenInstance = await ERC20Token.deployed();
     tokenPrice = 1000000000000000; // in wei 0.001 ether
     //Provision 75%  of all tokens to the token sale
     tokensAvailable = 750000;
+    tokenInstance = await ERC20Token.deployed();
   });
-contract('ERC20TokenSale', async function(accounts){
-    buyer = accounts[1];
-    admin = accounts[0];
-    await tokenInstance.transfer(instance.address,tokensAvailable, {from: admin});
+contract('ERC20TokenSale', function(accounts){
+
     describe('constructor', () => {
+        it('setup', async () => {
+            buyer = accounts[1];
+            admin = accounts[0];
+            await tokenInstance.transfer(instance.address,tokensAvailable, {from: admin});
+          });
         it('has contract address', async () => {
             let address = await instance.address;
             assert.notEqual(address, 0x0, 'has contract address');
