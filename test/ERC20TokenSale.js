@@ -17,10 +17,10 @@ beforeEach( async () => {
     //Provision 75%  of all tokens to the token sale
     tokensAvailable = 750000;
   });
-contract('ERC20TokenSale', function(accounts){
+contract('ERC20TokenSale', async function(accounts){
     buyer = accounts[1];
     admin = accounts[0];
-    tokenInstance.transfer(instance.address,tokensAvailable, {from: admin});
+    await tokenInstance.transfer(instance.address,tokensAvailable, {from: admin});
     describe('constructor', () => {
         it('has contract address', async () => {
             let address = await instance.address;
