@@ -63,8 +63,8 @@ contract('ERC20TokenSale', function(accounts){
             try{
                 await buyTokens(800000, { from: buyer, value: 1 });
             }
-            catch(error) {
-                assert.ok(error.message.indexOf('revert') >= 0, 'cannot purchase more tokens than available');
+            catch(err) {
+                assert.ok(err.message.indexOf('revert') >= 0, 'cannot purchase more tokens than available');
             }
             
         });
