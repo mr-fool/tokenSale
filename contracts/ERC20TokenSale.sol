@@ -26,6 +26,7 @@ contract ERC20TokenSale {
         //Require that the contract has enough tokens
         require(tokenContract.balanceOf(address(this) ) >= _numberOfTokens);
         //Require that a transfer is successful
+        require(tokenContract.transfer(msg.sender, _numberOfTokens));
 
         //Keep track of tokens sold
         tokensSold = tokensSold.add(_numberOfTokens);
