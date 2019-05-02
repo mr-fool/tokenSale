@@ -59,6 +59,15 @@ contract('ERC20TokenSale', function(accounts){
             assert.equal(receipt.logs[0].args._amount, numberOfTokens, 'logs the number of tokens purchased');
         });
 
+        it('msg.value must equal number of tokens in wei', async() =>{
+            try {
+                await instance.buyTokens(numberOfTokens, { from: buyer, value: 1 });
+            }
+            catch(error){
+                assert(error.message.indexOf('revert') >= 0, 'msg.value must equal number of tokens in wei');
+            }
+        });
+
         it ("cannot purchase more tokens than available", async () => {
             try{
                 await instance.buyTokens(800000, { from: buyer, value: 1 });
