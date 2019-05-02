@@ -22,8 +22,9 @@ contract ERC20TokenSale {
 
     function buyTokens(uint256 _numberOfTokens) public payable {
         //Require that value is equal to tokens
-        require(msg.value == _numberOfTokens.mul(tokenPrice) );
+        //require(msg.value == _numberOfTokens.mul(tokenPrice) );
         //Require that the contract has enough tokens
+        require(tokenContract.balanceOf(this) >= _numberOfTokens);
         //Require that a transfer is successful
 
         //Keep track of tokens sold
