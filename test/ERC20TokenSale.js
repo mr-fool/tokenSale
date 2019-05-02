@@ -71,6 +71,8 @@ contract('ERC20TokenSale', function(accounts){
         it ("cannot purchase more tokens than available", async () => {
             try{
                 await instance.buyTokens(800000, { from: buyer, value: 1 });
+                /*let balance = await tokenInstance.balanceOf(tokenSaleInstance.address);
+                assert.equal(balance.toNumber(), tokensAvailable - numberOfTokens);*/
             }
             catch(error) {
                 assert(error.message.indexOf('revert') >= 0, 'cannot purchase more tokens than available');
