@@ -61,7 +61,7 @@ contract('ERC20TokenSale', function(accounts){
 
         it ("msg.value must equal number of tokens in wei", async () => {
             try{
-                await buyTokens(numberOfTokens, { from: buyer, value: 1 });
+                await buyTokens(800000, { from: buyer, value: 1 });
             }
             catch(error) {
                 assert(error.message.indexOf('revert') >= 0, 'msg.value must equal number of tokens in wei');
