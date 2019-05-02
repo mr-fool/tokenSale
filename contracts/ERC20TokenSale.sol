@@ -35,5 +35,8 @@ contract ERC20TokenSale {
     }
 
     //Ending the token sale
-    
+    function endSale() public {
+        //Require admin
+        
+    }
 }
