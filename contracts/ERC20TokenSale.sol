@@ -33,4 +33,7 @@ contract ERC20TokenSale {
         //Trigger Sell event
         emit Sell(msg.sender, _numberOfTokens);
     }
+
+    //Ending the token sale
+    
 }
