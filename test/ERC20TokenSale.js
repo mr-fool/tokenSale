@@ -80,4 +80,18 @@ contract('ERC20TokenSale', function(accounts){
             
         });
     });
+
+    describe("end token sale", () => {
+        it ('must be admin to end sale', async() =>{
+            //Try to end sale from account other than the admin
+            try{
+                await instance.endSale({from: buyer});
+            }
+            catch (error) {
+                assert(error.message.indexOf('revert') >= 0, 'must be admin to end sale');
+            }
+        });
+        
+    });
+
 });
