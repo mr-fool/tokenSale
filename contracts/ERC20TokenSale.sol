@@ -37,6 +37,7 @@ contract ERC20TokenSale {
     //Ending the token sale
     function endSale() public {
         //Require admin
+        require(msg.sender == admin);
         //Transfer remaining erc20 tokens to admin
         //Destroy contract
     }

@@ -91,6 +91,11 @@ contract('ERC20TokenSale', function(accounts){
                 assert(error.message.indexOf('revert') >= 0, 'must be admin to end sale');
             }
         });
+
+        it('returns all unsold ERC20 tokens to admin', async () => {
+            let balance = await instance.balanceOf(admin);
+            assert.equal(balance.toNumber(),999990, 'returns all unsold ERC20 tokens to admin');
+        });
         
     });
 
