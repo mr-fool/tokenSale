@@ -40,6 +40,7 @@ contract ERC20TokenSale {
         require(msg.sender == admin);
         //Transfer remaining erc20 tokens to admin
         require(tokenContract.transfer(admin, tokenContract.balanceOf( address(this) ) ) );
-        //Destroy contract
+        //Transfer the balance to the admin
+         admin.transfer(address(this).balance);
     }
 }
