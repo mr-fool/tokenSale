@@ -93,7 +93,8 @@ contract('ERC20TokenSale', function(accounts){
         });
 
         it('returns all unsold ERC20 tokens to admin', async () => {
-            let balance = await instance.balanceOf(admin);
+            await instance.endSale({ from: admin });
+            let balance = await tokenInstance.balanceOf(admin);
             assert.equal(balance.toNumber(),999990, 'returns all unsold ERC20 tokens to admin');
         });
         
