@@ -41,6 +41,6 @@ contract ERC20TokenSale {
         //Transfer remaining erc20 tokens to admin
         require(tokenContract.transfer(admin, tokenContract.balanceOf( address(this) ) ) );
         //Transfer the balance to the admin
-         admin.transfer(address(this).balance);
+        admin.transfer(address(this).balance);
     }
 }
