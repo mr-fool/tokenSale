@@ -99,8 +99,8 @@ contract('ERC20TokenSale', function(accounts){
         });
 
         it('Check that the contract has no balance', async () => {
-            let finalBalance = web3.eth.getBalance(tokenSaleInstance.address)
-            assert.equal(finalBalance.toNumber(), 0, 'Check that the contract has no balance');
+            let finalBalance = await web3.eth.getBalance(instance.address);
+            assert.equal(finalBalance, 0, 'Check that the contract has no balance');
         });
         
     });
