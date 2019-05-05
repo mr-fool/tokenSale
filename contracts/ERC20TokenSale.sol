@@ -5,7 +5,7 @@ import "./SafeMath.sol";
 
 contract ERC20TokenSale {
     using SafeMath for uint256;
-    address admin;
+    address payable admin;
     ERC20Token public tokenContract;
     uint256 public tokenPrice;
     uint256 public tokensSold;
