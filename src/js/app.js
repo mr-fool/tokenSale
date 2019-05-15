@@ -1,6 +1,10 @@
+import Web3 from 'web3';
 App = {
+    web3Provider: null,
+
     init: function() {
         console.log('App initialized...')
+        return App.initWeb3();
     },
     initWeb3: function(){
         if (typeof web3 !== 'undefined') {
