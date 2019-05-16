@@ -1,5 +1,6 @@
 App = {
     web3Provider: null,
+    contracts: {},
 
     init: function() {
         console.log('App initialized...')
@@ -18,7 +19,7 @@ App = {
     },
     initContracts: function() {
         $.getJSON("ERC20Sale.json", function(ERC20TokenSale){
-            
+            App.contracts.ERC20TokenSale = TruffleContract();
         })
     }
 }
