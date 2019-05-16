@@ -1,5 +1,3 @@
-import Web3 from 'web3';
-
 App = {
     web3Provider: null,
 
@@ -17,6 +15,11 @@ App = {
             App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
             web3 = new Web3(App.web3Provider);
       }
+    },
+    initContracts: function() {
+        $.getJSON("ERC20Sale.json", function(ERC20TokenSale){
+            
+        })
     }
 }
 $(function(){
