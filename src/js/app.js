@@ -19,7 +19,7 @@ App = {
       return App.initContracts();
     },
     initContracts: function() {
-        $.getJSON("ERC20TokenSale.json", function(ERC20TokenSale){
+        $.getJSON("ERC20Token.json", function(ERC20TokenSale){
             App.contracts.ERC20TokenSale = TruffleContract(ERC20TokenSale);
             App.contracts.ERC20TokenSale.setProvider(App.web3Provider);
             App.contracts.ERC20TokenSale.deployed().then(function(ERC20TokenSale){
