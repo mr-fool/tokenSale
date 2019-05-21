@@ -18,15 +18,19 @@ App = {
       }
       return App.initContracts();
     },
-    initContracts: function() {
-        $.getJSON("ERC20Token.json", function(ERC20TokenSale){
-            App.contracts.ERC20TokenSale = TruffleContract(ERC20TokenSale);
-            App.contracts.ERC20TokenSale.setProvider(App.web3Provider);
-            App.contracts.ERC20TokenSale.deployed().then(function(ERC20TokenSale){
-                console.log("ERC20 Token Sale Address:", ERC20TokenSale.address);
-            });
-        })
-    }
+    initContracts: async () => {
+        const ERC20TokenSale = require('ERC20TokenSale.json'); 
+
+        const accounts = await web3.eth.getAccounts();
+      
+        console.log('Attempting to deploy from account', accounts[0]);
+      
+        const result = await new web3.eth.Contract(ERC20TokenSale.abi)
+          .deploy({ data: '0x' + ERC20TokenSale.evm.bytecode.object })
+          .send({ gas: '7000000', from: accounts[0] });
+      
+        console.log('Contract deployed to', result.options.address);
+      }
 }
 $(function(){
     $(window).load(function(){
