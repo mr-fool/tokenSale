@@ -1,3 +1,6 @@
+import Web3 from 'web3' 
+
+
 App = {
     web3Provider: null,
     contracts: {},
