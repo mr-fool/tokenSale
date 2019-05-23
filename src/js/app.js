@@ -1,4 +1,4 @@
-import Web3 from 'web3' 
+
 
 
 App = {
@@ -12,7 +12,6 @@ App = {
     initWeb3: function(){
         if (typeof web3 !== 'undefined') {
             // If a web3 instance is already provided by Meta Mask.
-            App.web3 = new Web3('http://localhost:7545/' );
             App.web3Provider = web3.currentProvider;
             web3 = new Web3(web3.currentProvider);
           } else {
@@ -22,20 +21,21 @@ App = {
       }
       return App.initContracts();
     },
-    initContracts: async () => {
-        const ERC20TokenSale = require('ERC20TokenSale.json'); 
+    initContracts: function() {
+      $.getJSON("ERC20TokenSale.json", function(ERC20TokenSale) {
+        App.contracts.ERC20TokenSale = TruffleContract(ERC20TokenSale);
+        App.contracts.ERC20TokenSale.setProvider(App.web3Provider);
+        App.contracts.ERC20TokenSale.deployed().then(function(ERC20TokenSale) {
+          console.log("Dapp Token Sale Address:", ERC20TokenSale.address);
+        });
+      }).done(function() {
+        $.getJSON("ERC20TokenSale.json", function(ERC20TokenSale) {
+          App.contracts.ERC20TokenSale = TruffleContract(ERC20TokenSale);
+          App.contracts.ERC20TokenSale.setProvider(App.web3Provider);
+          App.contracts.ERC20TokenSale.deployed().then(function(ERC20TokenSale) {
+            console.log("ERC20 Token Address:", ERC20TokenSale.address);
+  });
 
-        const accounts = await web3.eth.getAccounts();
-      
-        console.log('Attempting to deploy from account', accounts[0]);
-      
-        const result = await new web3.eth.Contract(ERC20TokenSale.abi)
-          .deploy({ data: '0x' + ERC20TokenSale.evm.bytecode.object })
-          .send({ gas: '7000000', from: accounts[0] });
-      
-        console.log('Contract deployed to', result.options.address);
-      }
-}
 $(function(){
     $(window).load(function(){
         App.init();
