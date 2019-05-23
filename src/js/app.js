@@ -22,20 +22,11 @@ App = {
       return App.initContracts();
     },
     initContracts: function() {
-      $.getJSON("ERC20TokenSale.json", function(ERC20TokenSale) {
-        App.contracts.ERC20TokenSale = TruffleContract(ERC20TokenSale);
-        App.contracts.ERC20TokenSale.setProvider(App.web3Provider);
-        App.contracts.ERC20TokenSale.deployed().then(function(ERC20TokenSale) {
-          console.log("Dapp Token Sale Address:", ERC20TokenSale.address);
-        });
-      }).done(function() {
-        $.getJSON("ERC20TokenSale.json", function(ERC20TokenSale) {
-          App.contracts.ERC20TokenSale = TruffleContract(ERC20TokenSale);
-          App.contracts.ERC20TokenSale.setProvider(App.web3Provider);
-          App.contracts.ERC20TokenSale.deployed().then(function(ERC20TokenSale) {
-            console.log("ERC20 Token Address:", ERC20TokenSale.address);
-  });
+      $.getJSON("ERC20TokenSale.json", function(ERC20TokenSale){
 
+      })
+    }
+  }
 $(function(){
     $(window).load(function(){
         App.init();
