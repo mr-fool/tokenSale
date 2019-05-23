@@ -13,7 +13,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x518ab2a8"
     },
     {
       "constant": true,
@@ -27,7 +28,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x55a373d6"
     },
     {
       "constant": true,
@@ -41,7 +43,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x7ff9b596"
     },
     {
       "inputs": [
@@ -56,7 +59,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "constructor"
+      "type": "constructor",
+      "signature": "constructor"
     },
     {
       "anonymous": false,
@@ -73,7 +77,8 @@
         }
       ],
       "name": "Sell",
-      "type": "event"
+      "type": "event",
+      "signature": "0x5e5e995ce3133561afceaa51a9a154d5db228cd7525d34df5185582c18d3df09"
     },
     {
       "constant": false,
@@ -87,7 +92,8 @@
       "outputs": [],
       "payable": true,
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x3610724e"
     },
     {
       "constant": false,
@@ -96,7 +102,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x380d831b"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.5.0+commit.1d4f565a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"_numberOfTokens\",\"type\":\"uint256\"}],\"name\":\"buyTokens\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"endSale\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokensSold\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenContract\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenPrice\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_tokenContract\",\"type\":\"address\"},{\"name\":\"_tokenPrice\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"_buyer\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"Sell\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/hetzer/Documents/GitHub/tokenSale/contracts/ERC20TokenSale.sol\":\"ERC20TokenSale\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/hetzer/Documents/GitHub/tokenSale/contracts/ERC20Token.sol\":{\"keccak256\":\"0x342f448fa2e3c069200d834e6034279cd5ef36a8ac3636e2f6607611534322fb\",\"urls\":[\"bzzr://544c26ab32ff13d0e8c5efdb8fb899441a245f965a00c3b4dda17e02b833da60\"]},\"/C/Users/hetzer/Documents/GitHub/tokenSale/contracts/ERC20TokenSale.sol\":{\"keccak256\":\"0x461b8ff55692acd7e27951a2f2f528578452d42ed7a2fe92003a5efc80a6db24\",\"urls\":[\"bzzr://8ba1963d9ef532dbdaf3f3aadbc56313dc3c6275c40fce37526d9532b5d7369e\"]},\"/C/Users/hetzer/Documents/GitHub/tokenSale/contracts/SafeMath.sol\":{\"keccak256\":\"0xe99b3a5c03b0a13676bc45ce9138b56a49396c33a6a0e2dc37742916a01ca22f\",\"urls\":[\"bzzr://0ad88d5a1a85ffdc72931636ca9afb5e354f3bc21f7396e3344ec116c7811357\"]}},\"version\":1}",
@@ -3530,9 +3537,16 @@
     "name": "solc",
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x45154893695310173B59A1C6056337907563a1e6",
+      "transactionHash": "0xb27d7bb95f07d24e243509c66fe0d283939c1537af4623fff8009fbca5027bfa"
+    }
+  },
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-05-23T16:23:35.331Z",
+  "updatedAt": "2019-05-23T16:35:08.274Z",
   "devdoc": {
     "methods": {}
   },
