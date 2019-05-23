@@ -22,12 +22,13 @@
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.5",
+    "babel-loader": "^8.0.6",
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "lite-server": "^2.4.0",
+    "lite-server": "^2.5.3",
     "token-test-suite": "^0.1.1",
+    "truffle-contract": "^4.0.17",
     "web3": "^1.0.0-beta.55"
   }
 }
