@@ -1,6 +1,7 @@
 App = {
     web3Provider: null,
     contracts: {},
+    account: "0x0",
 
     init: () => {
         console.log('App initialized...')
@@ -24,20 +25,32 @@ App = {
         App.contracts.ERC20TokenSale.setProvider(App.web3Provider);
         App.contracts.ERC20TokenSale.deployed().then((ERC20TokenSale) =>{
           console.log("ERC20 Token Sale Address:", ERC20TokenSale.address);
-        }).done(()=>{
+        });
+      }).done(()=>{
           $.getJSON("ERC20Token.json", (ERC20Token) =>{
             App.contracts.ERC20Token = TruffleContract(ERC20Token);
-            App.contracts.ERC20Token = setProvider(App.web3Provider);
+            App.contracts.ERC20Token.setProvider(App.web3Provider);
             App.contracts.ERC20Token.deployed().then(function(ERC20Token){
               console.log("ERC20 Sale Address:", ERC20Token.address);
-            })  
-          })
-
+            });  
+            return App.render();
 
         });
       })
+    },
+    render: () => {
+      //Load account data
+      web3.eth.getCoinbase( (err, account) => {
+        if (err === null ) {
+          console.log("account", account);
+          App.account = account;
+          $("#accountAddress").html("You Account: " + account);
+
+        }
+      });
     }
   }
+
 $(function(){
     $(window).load(function(){
         App.init();
