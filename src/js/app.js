@@ -3,6 +3,7 @@ App = {
     contracts: {},
     account: "0x0",
     loading: false,
+    tokenPrice: 1000000000000000,
 
     init: () => {
         console.log('App initialized...')
@@ -44,6 +45,13 @@ App = {
         return;
       }
       App.loading = true;
+      
+      var loader = $('#loader');
+      var content = $("content");
+
+      loader.show();
+      content.hide();
+      
       //Load account data
       web3.eth.getCoinbase( (err, account) => {
         if (err === null ) {
@@ -52,7 +60,21 @@ App = {
           $("#accountAddress").html("You Account: " + account);
 
         }
+      })
+
+      App.contracts.ERC20TokenSale.deployed().then(function(instance) {
+        ERC20TokenSaleInstance = instance;
+        return ERC20TokenSaleInstance.tokenPrice();
+      }).then(function(tokenPrice){
+        console.log("tokenPrice", tokenPrice);
+        App.tokenPrice = tokenPrice;
+        $(".token-price").html(App.tokenPrice.toNumber());
       });
+      
+      App.loading = false;
+      loader.hide();
+      content.show();
+
     }
   }
 
