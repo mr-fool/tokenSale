@@ -69,9 +69,9 @@ App = {
         ERC20TokenSaleInstance = instance;
         return ERC20TokenSaleInstance.tokenPrice();
       }).then(function(tokenPrice){
-        console.log("tokenPrice", tokenPrice);
+        console.log("tokenPrice " + tokenPrice.toNumber());
         App.tokenPrice = tokenPrice;
-        $(".token-price").html(App.tokenPrice.toNumber());
+        $(".token-price").html(web3.fromWei(App.tokenPrice, "ether").toNumber());
       });
       
       App.loading = false;

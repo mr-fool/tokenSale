@@ -38,6 +38,7 @@ contract('ERC20TokenSale', function(accounts){
         it('token price is correct', async () => {
             let price = await instance.tokenPrice();
             assert.equal(price, tokenPrice, 'token price is correct');
+            //console.log("tokenPrice " + tokenPrice);
         });
 
     });
