@@ -1,13 +1,12 @@
-import TruffleContract from "truffle-contract";
 App = {
     web3Provider: null,
     contracts: {},
 
-    init: function() {
+    init: () => {
         console.log('App initialized...')
         return App.initWeb3();
     },
-    initWeb3: function(){
+    initWeb3: () =>{
         if (typeof web3 !== 'undefined') {
             // If a web3 instance is already provided by Meta Mask.
             App.web3Provider = web3.currentProvider;
@@ -19,13 +18,23 @@ App = {
       }
       return App.initContracts();
     },
-    initContracts: function() {
-      $.getJSON("ERC20TokenSale.json", function(ERC20TokenSale){
+    initContracts: () => {
+      $.getJSON("ERC20TokenSale.json", (ERC20TokenSale) =>{
         App.contracts.ERC20TokenSale = TruffleContract(ERC20TokenSale);
         App.contracts.ERC20TokenSale.setProvider(App.web3Provider);
-        App.contracts.ERC20TokenSale.deployed().then(function(ERC20TokenSale){
+        App.contracts.ERC20TokenSale.deployed().then((ERC20TokenSale) =>{
           console.log("ERC20 Token Sale Address:", ERC20TokenSale.address);
-        })
+        }).done(()=>{
+          $.getJSON("ERC20Token.json", (ERC20Token) =>{
+            App.contracts.ERC20Token = TruffleContract(ERC20Token);
+            App.contracts.ERC20Token = setProvider(App.web3Provider);
+            App.contracts.ERC20Token.deployed().then(function(ERC20Token){
+              console.log("ERC20 Sale Address:", ERC20Token.address);
+            })  
+          })
+
+
+        });
       })
     }
   }
