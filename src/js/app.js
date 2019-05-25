@@ -50,8 +50,11 @@ App = {
       var content = $("content");
 
       loader.show();
+      console.log("loader " + loader);
+
       content.hide();
-      
+      console.log("content " + content);
+
       //Load account data
       web3.eth.getCoinbase( (err, account) => {
         if (err === null ) {
