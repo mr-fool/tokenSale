@@ -1,7 +1,7 @@
+let TruffleContract =  require("truffle-contract"),
 App = {
     web3Provider: null,
     contracts: {},
-    TruffleContract: require("truffle-contract"),
 
     init: function() {
         console.log('App initialized...')
