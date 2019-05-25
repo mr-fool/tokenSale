@@ -1,4 +1,4 @@
-let TruffleContract =  require("truffle-contract"),
+import TruffleContract from "truffle-contract";
 App = {
     web3Provider: null,
     contracts: {},
