@@ -2,6 +2,7 @@ App = {
     web3Provider: null,
     contracts: {},
     account: "0x0",
+    loading: false,
 
     init: () => {
         console.log('App initialized...')
@@ -39,6 +40,10 @@ App = {
       })
     },
     render: () => {
+      if (App.loading){
+        return;
+      }
+      App.loading = true;
       //Load account data
       web3.eth.getCoinbase( (err, account) => {
         if (err === null ) {
