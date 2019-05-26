@@ -50,7 +50,7 @@ App = {
       var content = $("content");
 
       loader.show();
-      console.log("loader " + JSON.stringify(loader) );
+      console.log(loader );
 
       content.hide();
       console.log("content " + content);
