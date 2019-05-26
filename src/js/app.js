@@ -73,9 +73,12 @@ App = {
         $(".token-price").html(web3.fromWei(App.tokenPrice, "ether").toNumber());
         return ERC20TokenSaleInstance.tokensSold();
       }).then((tokensSold)=> {
-        App.tokensSold = tokensSold.toNumber();
+        App.tokensSold = 600000;
         $(".tokens-sold").html(App.tokensSold);
         $(".tokens-available").html(App.tokensAvailable);
+
+        let  progressPercent = Math.ceil(App.tokensSold / App.tokensAvailable);
+        $("#progress").css("width", progressPercent, '%');
       });
       
       App.loading = false;
