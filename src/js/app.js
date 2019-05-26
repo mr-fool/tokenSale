@@ -77,7 +77,7 @@ App = {
         $(".tokens-sold").html(App.tokensSold);
         $(".tokens-available").html(App.tokensAvailable);
 
-        let  progressPercent = (App.tokensSold / App.tokensAvailable) * 100;
+        let  progressPercent = (Math.ceil(App.tokensSold) / App.tokensAvailable) * 100;
         console.log(progressPercent);
         $("#progress").css("width", progressPercent + '%');
       });
