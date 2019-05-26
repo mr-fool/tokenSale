@@ -63,7 +63,7 @@ App = {
 
         }
       })
-
+      //Load token sale contract
       App.contracts.ERC20TokenSale.deployed().then(function(instance) {
         ERC20TokenSaleInstance = instance;
         return ERC20TokenSaleInstance.tokenPrice();
@@ -80,6 +80,11 @@ App = {
         let  progressPercent = (Math.ceil(App.tokensSold) / App.tokensAvailable) * 100;
         console.log(progressPercent);
         $("#progress").css("width", progressPercent + '%');
+        //Load token contract
+        App.contracts.ERC20Token.deployed().then((instance)=>{
+          ERC20TokenSaleInstance = instance;
+          return ERC20TokenSaleInstance.balanceOf(App.account);
+        })
       });
       
       App.loading = false;
