@@ -47,7 +47,7 @@ App = {
       App.loading = true;
       
       var loader = $('#loader');
-      var content = $("content");
+      var content = $("#content");
 
       loader.show();
       console.log(loader );
