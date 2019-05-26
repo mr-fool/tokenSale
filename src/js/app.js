@@ -4,6 +4,8 @@ App = {
     account: "0x0",
     loading: false,
     tokenPrice: 1000000000000000,
+    tokensSold: 0,
+    tokensAvailable: 750000,
 
     init: () => {
         console.log('App initialized...')
@@ -65,10 +67,15 @@ App = {
       App.contracts.ERC20TokenSale.deployed().then(function(instance) {
         ERC20TokenSaleInstance = instance;
         return ERC20TokenSaleInstance.tokenPrice();
-      }).then(function(tokenPrice){
+      }).then((tokenPrice) =>{
         console.log("tokenPrice " + tokenPrice.toNumber());
         App.tokenPrice = tokenPrice;
         $(".token-price").html(web3.fromWei(App.tokenPrice, "ether").toNumber());
+        return ERC20TokenSaleInstance.tokensSold();
+      }).then((tokensSold)=> {
+        App.tokensSold = tokensSold.toNumber();
+        $(".tokens-sold").html(App.tokensSold);
+        $(".tokens-available").html(App.tokensAvailable);
       });
       
       App.loading = false;
