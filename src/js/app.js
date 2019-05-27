@@ -84,13 +84,34 @@ App = {
         App.contracts.ERC20Token.deployed().then((instance)=>{
           ERC20TokenSaleInstance = instance;
           return ERC20TokenSaleInstance.balanceOf(App.account);
+        }).then((balance)=> {
+          $('.dapp-balance').html(balance.toNumber());
+
+          App.loading = false;
+          loader.hide();
+          content.show();
+
         })
       });
       
-      App.loading = false;
-      loader.hide();
-      content.show();
 
+    },
+    buyTokens: () => {
+      $("#content").hide();
+      $("loader").show();
+      let numberOfToken = $("#numberOfTokens").val();
+      App.contracts.ERC20TokenSale.deployed().then((instance)=>{
+        return instance.buyTokens(numberOfTokens, {
+          from: App.account,
+          value: numberOfTokens * App.tokenPrice,
+          gas: 500000
+        });
+      }).then((result)=> {
+        console.log("Tokens bought...");
+        $("form").trigger("reset"); //reset number of tokens in form
+        $("loader").hide();
+        $("#content").show();
+      });
     }
   }
 
