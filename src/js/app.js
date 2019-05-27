@@ -37,11 +37,25 @@ App = {
             App.contracts.ERC20Token.deployed().then(function(ERC20Token){
               console.log("ERC20 Sale Address:", ERC20Token.address);
             });  
+            App.listenForEvents();
             return App.render();
 
         });
       })
     },
+    //Listen for events emitted from the contract
+    listenForEvents: ()=>{
+      App.contracts.ERC20TokenSale.deployed().then((instance)=>{
+        instance.Sell({}, {
+          fromBlock: 0,
+          toBlock: 'latest',
+        }).watch((error,event)=>{
+          console.log("event triggered", event);
+          App.render();
+        })
+      })
+    },
+
     render: () => {
       if (App.loading){
         return;
@@ -87,9 +101,9 @@ App = {
         }).then((balance)=> {
           $('.dapp-balance').html(balance.toNumber());
 
-          App.loading = false;
-          loader.hide();
-          content.show();
+            App.loading = false;
+            loader.hide();
+            content.show();
 
         })
       });
@@ -99,7 +113,7 @@ App = {
     buyTokens: () => {
       $("#content").hide();
       $("loader").show();
-      let numberOfToken = $("#numberOfTokens").val();
+      let numberOfTokens = $("#numberOfTokens").val();
       App.contracts.ERC20TokenSale.deployed().then((instance)=>{
         return instance.buyTokens(numberOfTokens, {
           from: App.account,
@@ -109,8 +123,7 @@ App = {
       }).then((result)=> {
         console.log("Tokens bought...");
         $("form").trigger("reset"); //reset number of tokens in form
-        $("loader").hide();
-        $("#content").show();
+        //Wait for Sell event
       });
     }
   }
